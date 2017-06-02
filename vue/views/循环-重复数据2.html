@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta charset="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<script type="text/javascript" src='../js/vue.js'></script>
+</head>
+<body>
+	<div id="box">
+		{{a}}
+		<br />
+		{{b}}
+	</div>
+	<script type="text/javascript">
+	window.onload = function(){
+		var vm = new Vue({
+			el:'#box',
+			data:{
+				a:1,
+				b:2
+			}
+		});
+		vm.$watch('a',function(){
+			alert('发生了变化了');
+			this.b = this.a +100;
+		})
+		document.onclick = function(){
+			vm.a = 2;
+		}
+	}
+		
+	</script>
+</body>
+</html>

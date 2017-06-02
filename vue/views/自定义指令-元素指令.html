@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta charset="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<script type="text/javascript" src='../js/vue.js'></script>
+	<style>
+		lv-red{
+			width: 100px;
+			background: gray;
+			height: 100px;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<lv-red></lv-red>
+	</div>
+	<script type="text/javascript">
+		Vue.elementDirective('lv-red',{
+			bind:function (){
+				this.el.style.background = 'red';
+			}
+		});
+		
+	window.onload = function(){
+		var vm = new Vue({
+			el:'#box',
+			data:{
+				a:'blue'
+			}
+		});
+	}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../bower_components/vue/dist/vue.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<aaa></aaa>
+		</div>
+		<script>
+			var Aaa = Vue.extend({
+				template:"<h2>{{msg}}</h2>",
+				data(){
+					return {
+						msg:"dddddd"
+					}
+				}
+			})
+			
+			var vm = new Vue({
+				el:"#box",
+				data:{
+					bSign:true
+				},
+				components:{ // 局部组件
+					aaa:Aaa
+				}
+			});
+		</script>
+	</body>
+</html>

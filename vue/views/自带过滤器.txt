@@ -1,0 +1,107 @@
+1.首字母大写
+{{message | capitalize}}
+
+var myVue = new Vue({
+	el:'选择器',
+	data:{
+		message:'abc'
+	}
+});
+
+2.全部大写
+{{message | uppercase}}
+3.全部小写
+{{message | lowercase}}
+4.输出金钱以及小数点
+参数 第一个参数 {String} 货币符号 默认值 $
+第二个参数 {Number}[小数位]-默认值：2
+
+{{message | currency}}
+{{message | currentcy '¥' "1"}}
+5.debounce 
+1）限制：需要再@里面使用
+2）参数：300 等待时间
+3）包装处理器，让它延迟执行，默认延迟300ms，包装后的处理器在调用之后至少延迟相对应的ms
+
+{{message | deounce}}
+例子：
+<div id="box">
+		<input type="text" @keyup="show | debounce 2000" />
+	</div>
+	<script>
+		var vm = new Vue({
+			data:{
+				
+			},
+			methods:{
+				show:function(){
+					alert(1);
+				}
+			}
+		}).$mount('#box');
+	</script>
+6.limitBy
+1)限制：需要再v-for（数组）里面使用
+2）参数 去的数量  偏移量
+{{item in data | limitBy 10}}
+<div id="box">
+		<ul>
+			<li v-for="item in arr | limitBy 5 2">
+				{{item}} // 输出 3 4 5 6 7
+			</li>
+		</ul>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#box',
+			data:{
+				arr:[1,2,3,4,5,6,7,8,9,10,11,12]
+			}
+		});
+	</script>
+7.filterBy
+(1)限制:需在v-for(即数组)里面使用
+
+(2)三个参数:
+
+第一个参数: {String | Function} 需要搜索的字符串
+
+第二个参数: in (可选,指定搜寻位置)
+
+第三个参数: {String} (可选,数组格式)
+<div id="box">
+		<input type="text" v-model="a" />
+		<ul>
+			<li v-for="val in arr | filter 'o'>
+				{{val}}
+			</li>
+		</ul>
+		<ul>
+			<li v-for="val in arr | filterBy 'l' in 'name' 'data'">
+				{{val}}
+			</li>
+		</ul>
+	</div>
+	<script>
+		var vm = new Vue({
+			data:{
+				arr:['width','height','background','orange'],
+				mail:[
+					{name:'lily'},
+					{name:'lucy'},
+					{anem:'ol'},
+					{data:'lsh'},
+					{data:'ofg'}
+				]
+			},
+			methods:{
+				
+			}
+		}).$mount('#box');
+	</script>
+8.orderBy
+参数:
+
+第一个参数: {String | Array<String> | Function} 需要搜索的字符串
+
+第二个参数: {String} 可选参数 order 决定结果升序（order >= 0）或降序（order < 0）,默认是升序

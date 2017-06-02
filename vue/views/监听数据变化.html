@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta charset="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<script type="text/javascript" src='../js/vue.js'></script>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="添加" @click='add()' />
+		<ul>
+			<li v-for='val in arr' track-by="$index">
+				{{$index}}{{val}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			data:{
+				arr:['apple','pear','orange']
+			},
+			methods:{
+				add:function(){
+					this.arr.push('tomato');
+				}
+			}
+		}).$mount('#box');
+	</script>
+</body>
+</html>

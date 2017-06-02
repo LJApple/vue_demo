@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../bower_components/vue/dist/vue.js" ></script>
+		<link rel="stylesheet" href="../bower_components/animate.css/animate.css" />
+		<style>
+			#div1{
+				height: 100px;
+				width: 100px;
+				border: 1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<input type="button" value="按钮" @click="toggle" />
+			<div id="div1" class="animated" v-show="bSign" transition="bounce"></div>
+		</div>
+		<script>
+			new Vue({
+				el:'#box',
+				data:{
+					bSign:true
+				},
+				methods:{
+					toggle(){
+						this.bSign = !this.bSign
+					}
+				},
+				transitions:{
+					bounce:{
+						enterClass:"zoomInLeft",
+						leaveClass:"zoomOutRight"
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

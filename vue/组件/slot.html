@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../bower_components/vue/dist/vue.js" ></script>
+		
+	</head>
+	<body>
+		<div id="box">
+			<aaa>
+				<ul slot="ul-slot">
+					<li>1111</li>
+					<li>2222</li>
+					<li>3333</li>
+				</ul>
+				<ol slot="ol-slot">
+					<li>11111</li>
+					<li>2</li>
+					<li>3</li>
+				</ol>
+			</aaa>
+			<hr>
+			<aaa></aaa>
+		</div>
+		<script>
+			var vm = new Vue({
+				el:'#box',
+				data:{
+					a:'aaa'
+				},
+				components:{
+					'aaa':{
+						template:'<h1>xxxxx</h1>'
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
